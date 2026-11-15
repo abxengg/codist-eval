@@ -1,5 +1,11 @@
 # Review measurements
 
+## A second reading, not measured yet
+
+`go run ./review` now compares one reading of each file with two (`review.Options{Twice: true}`, codist-review
+v0.11.0), on the same bugs. The callers option it used to compare was removed from codist-review after the result
+below. Run it on the 10-bug sample before trusting the second reading: about an hour with `qwen2.5-coder:7b`.
+
 ## Callers as context, 2026-11-07
 
 Does showing the model the code in other files that calls the changed methods help it find bugs?

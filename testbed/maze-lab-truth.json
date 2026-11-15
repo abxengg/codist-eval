@@ -203,7 +203,7 @@
   "kind": "hard",
   "bug": "The turn buffer is counted down twice per step while the player waits at a wall, so an early turn is forgotten after 4 steps (rule 4: 8)",
   "path": "src/main/java/dev/glowmaze/GameState.java",
-  "line": 44,
+  "line": 69,
   "rule": "rule 4",
   "behaviourCanSee": false,
   "service": "game"

@@ -83,7 +83,7 @@ func main() {
 			with++
 		}
 	}
-	fmt.Printf("\nbugs located: without callers %d of %d, with callers %d of %d\n", without, len(results), with, len(results))
+	fmt.Printf("\nbugs located: one reading %d of %d, with a second reading %d of %d\n", without, len(results), with, len(results))
 }
 
 func runBug(bug, cached, fixed string, client *model.Client) result {
@@ -128,16 +128,16 @@ func runBug(bug, cached, fixed string, client *model.Client) result {
 	for _, ch := range changes {
 		res.Targets[ch.Path] = ch.Added
 	}
-	for i, callers := range []bool{false, true} {
+	for i, twice := range []bool{false, true} {
 		st, err := store.Open(filepath.Join(work, fmt.Sprint("db", i)), "r")
 		if err != nil {
 			res.Problems = err.Error()
 			return res
 		}
-		r := &review.Reviewer{Repo: repo, Store: st, Model: client, MaxFiles: 8, Callers: callers}
+		r := &review.Reviewer{Repo: repo, Store: st, Model: client, MaxFiles: 8}
 		start := time.Now()
 		v := variant{}
-		if err := r.Review(context.Background(), sha, review.Options{}); err != nil {
+		if err := r.Review(context.Background(), sha, review.Options{Twice: twice}); err != nil {
 			v.Error = err.Error()
 		}
 		if rv, ok := st.GetReview(sha); ok && rv.Note != "" && v.Error == "" {
@@ -157,7 +157,7 @@ func runBug(bug, cached, fixed string, client *model.Client) result {
 			v.Findings = append(v.Findings, fd)
 		}
 		st.Close()
-		if callers {
+		if twice {
 			res.With = v
 		} else {
 			res.Without = v

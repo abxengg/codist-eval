@@ -929,7 +929,9 @@ edit(f"{J}/GameState.java", """        if (centred && !open(px, py, dir)) {
         }""")
 commit("Drop a stale turn sooner when blocked", "hard",
        "The turn buffer is counted down twice per step while the player waits at a wall, so an early turn is forgotten after 4 steps (rule 4: 8)",
-       f"{J}/GameState.java", "            turnBuffer--;\n            return;".split("\n")[0], "rule 4")
+       # The needle is the line before the one the commit adds: "turnBuffer--;" alone is first found at the countdown
+       # the game already had, 26 lines higher, and a review that points at the added line was scored as a miss.
+       f"{J}/GameState.java", "        if (centred && !open(px, py, dir)) {", "rule 4")
 
 # ---------------------------------------------------------------- controls
 
