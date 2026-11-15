@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"log/slog"
 	"math/rand"
 	"os"
 	"os/exec"
@@ -68,7 +69,11 @@ func main() {
 	url := flag.String("url", "http://localhost:11434", "the model server")
 	seed := flag.Int64("seed", 1, "which bugs are picked")
 	out := flag.String("out", "", "write every planted bug and what caught it as JSON")
+	learnMode := flag.Bool("learn", false, "measure learned checks: for each kind of bug, plant one and fix it so Codist learns a check, then plant others of that kind and count what the check catches without the model")
 	flag.Parse()
+	if os.Getenv("CODIST_LOG") == "debug" { // show why a check was or was not learned
+		slog.SetLogLoggerLevel(slog.LevelDebug)
+	}
 	if *repoDir == "" {
 		fmt.Fprintln(os.Stderr, "name a repository with -repo")
 		os.Exit(2)
@@ -94,6 +99,14 @@ func main() {
 	runner := &behaviour.Runner{Repo: repo, Work: filepath.Join(work, "behaviour")}
 
 	mutants := pick(repo, rand.New(rand.NewSource(*seed)), *n)
+	if *learnMode {
+		if rev.Model == nil {
+			fmt.Fprintln(os.Stderr, "-learn needs -model: the model writes the checks")
+			os.Exit(2)
+		}
+		learnRun(rev, repo, scratch, st, mutants)
+		return
+	}
 	fmt.Printf("%d bugs planted in %s\n", len(mutants), *repoDir)
 	for i := range mutants {
 		m := &mutants[i]
