@@ -30,6 +30,7 @@ type finding struct {
 	Path, Title, Source string
 	Line                int
 	Located             bool
+	Note                bool `json:",omitempty"` // shown as a note, not an alarm: Codist doubted it
 }
 
 type variant struct {
@@ -52,6 +53,7 @@ func main() {
 	url := flag.String("url", "http://localhost:11434", "model server")
 	out := flag.String("out", "review-results.json", "where to write results")
 	cache := flag.String("cache", filepath.Join(os.Getenv("HOME"), ".cache/codist-bench/repos"), "benchmark clones")
+	once := flag.Bool("once", false, "review each bug once, without the second-reading variant")
 	flag.Parse()
 	list, err := os.ReadFile(flag.Arg(0))
 	if err != nil {
@@ -62,12 +64,18 @@ func main() {
 		fail(fmt.Errorf("%s", note))
 	}
 	var results []result
+	done := map[string]bool{} // a run that was stopped carries on: bugs already in the results file are not done again
+	if b, err := os.ReadFile(*out); err == nil && json.Unmarshal(b, &results) == nil {
+		for _, r := range results {
+			done[r.Bug] = true
+		}
+	}
 	for _, line := range strings.Split(strings.TrimSpace(string(list)), "\n") {
 		f := strings.Fields(line)
-		if len(f) < 3 {
+		if len(f) < 3 || done[f[0]] {
 			continue
 		}
-		res := runBug(f[0], filepath.Join(*cache, f[1]), f[2], client)
+		res := runBug(f[0], filepath.Join(*cache, f[1]), f[2], client, *once)
 		results = append(results, res)
 		fmt.Printf("%-45s without %d/%d  with %d/%d  %s\n", res.Bug, res.Without.Located, len(res.Without.Findings),
 			res.With.Located, len(res.With.Findings), res.Problems)
@@ -84,9 +92,22 @@ func main() {
 		}
 	}
 	fmt.Printf("\nbugs located: one reading %d of %d, with a second reading %d of %d\n", without, len(results), with, len(results))
+	alarm, usable := 0, 0
+	for _, r := range results {
+		if r.Problems == "" {
+			usable++
+		}
+		for _, f := range r.Without.Findings {
+			if f.Located && !f.Note {
+				alarm++
+				break
+			}
+		}
+	}
+	fmt.Printf("one reading: located by an alarm (not a note) %d of %d usable bugs\n", alarm, usable)
 }
 
-func runBug(bug, cached, fixed string, client *model.Client) result {
+func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 	res := result{Bug: bug}
 	work, _ := os.MkdirTemp("", "codist-review-"+bug)
 	defer os.RemoveAll(work)
@@ -129,6 +150,9 @@ func runBug(bug, cached, fixed string, client *model.Client) result {
 		res.Targets[ch.Path] = ch.Added
 	}
 	for i, twice := range []bool{false, true} {
+		if twice && once {
+			break
+		}
 		st, err := store.Open(filepath.Join(work, fmt.Sprint("db", i)), "r")
 		if err != nil {
 			res.Problems = err.Error()
@@ -145,7 +169,7 @@ func runBug(bug, cached, fixed string, client *model.Client) result {
 		}
 		v.Took = time.Since(start).Seconds()
 		for _, f := range st.Findings(sha) {
-			fd := finding{Path: f.Path, Title: f.Title, Source: f.Source, Line: f.Line}
+			fd := finding{Path: f.Path, Title: f.Title, Source: f.Source, Line: f.Line, Note: f.Doubt != ""}
 			for _, t := range res.Targets[f.Path] {
 				if abs(f.Line-t) <= locate {
 					fd.Located = true

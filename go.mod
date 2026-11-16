@@ -7,7 +7,7 @@ require (
 	github.com/abxengg/codist-git v0.7.0
 	github.com/abxengg/codist-java v0.5.0
 	github.com/abxengg/codist-model v0.6.0
-	github.com/abxengg/codist-review v0.12.0
+	github.com/abxengg/codist-review v0.13.0
 )
 
 require (
