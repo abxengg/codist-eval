@@ -15,6 +15,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"strings"
 	"time"
 
@@ -66,6 +67,7 @@ func main() {
 	var results []result
 	done := map[string]bool{} // a run that was stopped carries on: bugs already in the results file are not done again
 	if b, err := os.ReadFile(*out); err == nil && json.Unmarshal(b, &results) == nil {
+		results = slices.DeleteFunc(results, func(r result) bool { return r.Problems != "" }) // a bug that could not be set up is tried again
 		for _, r := range results {
 			done[r.Bug] = true
 		}
@@ -122,13 +124,14 @@ func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 		return res
 	}
 	defer gitIn(cached, "worktree", "remove", "--force", tree)
-	patch, err := gitIn(tree, "diff", fixed, fixed+"~1", "--", "*.java", ":!*src/test*", ":!*/test/*")
-	if err != nil || patch == "" {
+	// The patch is written as git gives it: trimming it cuts a last line that is only spaces, and git then calls it corrupt.
+	raw, err := exec.Command("git", "-C", tree, "diff", fixed, fixed+"~1", "--", "*.java", ":!*src/test*", ":!*/test/*").Output()
+	if err != nil || len(raw) == 0 {
 		res.Problems = "no main code in the fix"
 		return res
 	}
 	pfile := filepath.Join(work, "bug.patch")
-	_ = os.WriteFile(pfile, []byte(patch+"\n"), 0o644)
+	_ = os.WriteFile(pfile, raw, 0o644)
 	if msg, err := gitIn(tree, "apply", "--whitespace=nowarn", pfile); err != nil {
 		res.Problems = "apply: " + msg
 		return res
