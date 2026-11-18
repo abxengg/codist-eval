@@ -1,7 +1,7 @@
 // review measures what Codist's review finds on real bugs, with and without an option, on the same bugs.
 //
 // For each bug it checks out the fixed commit, commits the bug back in (the fix reversed, main code only), and
-// reviews that commit once per variant. A finding within 3 lines of a line the bug commit adds counts as located:
+// reviews that commit once per variant. The commit message only names the changed files, so it gives nothing away. A finding within 3 lines of a line the bug commit adds counts as located:
 // an upper bound, since a finding near the bug may not name it, so read the located findings before quoting them.
 //
 //	go run ./review -model qwen2.5-coder:7b -out results.json ../behaviour/bugs.txt
@@ -126,7 +126,15 @@ func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 	defer gitIn(cached, "worktree", "remove", "--force", tree)
 	// The patch is written as git gives it: trimming it cuts a last line that is only spaces, and git then calls it corrupt.
 	raw, err := exec.Command("git", "-C", tree, "diff", fixed, fixed+"~1", "--", "*.java", ":!*src/test*", ":!*/test/*").Output()
-	if err != nil || len(raw) == 0 {
+	if err != nil {
+		msg := err.Error()
+		if ee, ok := err.(*exec.ExitError); ok {
+			msg = strings.TrimSpace(string(ee.Stderr))
+		}
+		res.Problems = "diff: " + msg
+		return res
+	}
+	if len(raw) == 0 {
 		res.Problems = "no main code in the fix"
 		return res
 	}
@@ -137,7 +145,7 @@ func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 		return res
 	}
 	_, _ = gitIn(tree, "add", "-A")
-	if msg, err := gitIn(tree, "commit", "-q", "-m", "Reintroduce the bug"); err != nil {
+	if msg, err := gitIn(tree, "commit", "-q", "-m", neutralMessage(gitIn, tree)); err != nil {
 		res.Problems = "commit: " + msg
 		return res
 	}
@@ -191,6 +199,20 @@ func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 		}
 	}
 	return res
+}
+
+// neutralMessage names the changed files and nothing else. Codist reads commit messages, so a message that
+// says the commit brings a bug back tells the model the answer; real commits never do.
+func neutralMessage(gitIn func(string, ...string) (string, error), tree string) string {
+	out, _ := gitIn(tree, "diff", "--cached", "--name-only")
+	var names []string
+	for _, p := range strings.Fields(out) {
+		names = append(names, filepath.Base(p))
+	}
+	if len(names) == 0 {
+		return "Update code"
+	}
+	return "Update " + strings.Join(names, ", ")
 }
 
 func abs(n int) int {

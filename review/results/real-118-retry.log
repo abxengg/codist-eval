@@ -1,0 +1,53 @@
+2026/11/18 08:31:53 INFO dropped model findings lib=review sha=a68d994 path=src/main/java/com/fasterxml/jackson/databind/util/StdDateFormat.java count=1
+JacksonDatabind-87                            without 0/1  with 0/0  
+JacksonDatabind-93                            without 1/1  with 0/0  
+JxPath-10                                     without 1/1  with 0/0  
+JxPath-22                                     without 1/1  with 0/0  
+2026/11/18 08:37:19 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n\"change\": \"The javadoc for createNumber() was updated to remove the statement that it returns null when the input is null, and the code logic checking for hex prefixes (0x/-0x) was simplified by rem"
+2026/11/18 08:37:19 WARN model could not review file lib=review sha=4e8976e path=src/main/java/org/apache/commons/lang3/math/NumberUtils.java err="the model stopped writing words after: {\n\"change\": \"The javadoc for createNumber() was updated to remove the statement that it returns null when the input is null, and the code logic checking for hex prefixes (0x/-0x) was simplified by rem"
+Lang-16                                       without 1/1  with 0/0  
+Lang-20                                       without 2/2  with 0/0  
+Lang-34                                       without 1/1  with 0/0  
+Lang-41                                       without 2/3  with 0/0  
+Lang-48                                       without 1/1  with 0/0  
+2026/11/18 08:49:49 INFO dropped model findings lib=review sha=5665aac path=src/java/org/apache/commons/lang/math/NumberUtils.java count=2
+Lang-58                                       without 0/2  with 0/0  
+2026/11/18 08:51:01 INFO dropped model findings lib=review sha=b6a7cc8 path=src/main/java/org/apache/commons/lang3/math/NumberUtils.java count=1
+Lang-7                                        without 1/2  with 0/0  
+Math-30                                       without 1/1  with 0/0  
+Math-44                                       without 0/0  with 0/0  
+Math-58                                       without 1/1  with 0/0  
+Math-63                                       without 0/1  with 0/0  
+Math-82                                       without 1/1  with 0/0  
+Math-87                                       without 0/0  with 0/0  
+2026/11/18 09:04:54 INFO dropped model findings lib=review sha=d95ed4f path=test/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValuesTest.java count=1
+2026/11/18 09:05:41 INFO dropped model findings lib=review sha=d95ed4f path=test/org/mockitousage/bugs/ShouldMocksCompareToBeConsistentWithEqualsTest.java count=1
+Mockito-24                                    without 1/1  with 0/0  
+2026/11/18 09:11:15 INFO dropped model findings lib=review sha=7affef3 path=test/org/mockito/internal/progress/HandyReturnValuesTest.java count=2
+2026/11/18 09:14:33 INFO dropped model findings lib=review sha=7affef3 path=test/org/mockito/internal/stubbing/defaultanswers/ReturnsMocksTest.java count=1
+Mockito-26                                    without 7/7  with 0/0  
+2026/11/18 10:54:25 INFO dropped model findings lib=review sha=0ee787d path=src/org/mockito/internal/configuration/injection/FinalMockCandidateFilter.java count=2
+2026/11/18 11:57:54 INFO dropped model findings lib=review sha=0ee787d path=src/org/mockito/internal/configuration/injection/OngoingInjecter.java count=1
+2026/11/18 13:04:02 INFO dropped model findings lib=review sha=0ee787d path=test/org/mockitousage/bugs/InjectionByTypeShouldFirstLookForExactTypeThenAncestorTest.java count=2
+Mockito-28                                    without 3/3  with 0/0  
+2026/11/18 17:39:45 INFO dropped model findings lib=review sha=d901665 path=src/org/mockito/internal/invocation/InvocationMatcher.java count=1
+Mockito-3                                     without 2/2  with 0/0  
+2026/11/18 21:14:27 INFO dropped model findings lib=review sha=9223530 path=test/org/mockito/internal/invocation/InvocationMatcherTest.java count=1
+2026/11/18 21:32:07 INFO dropped model findings lib=review sha=9223530 path=test/org/mockitousage/IMethods.java count=1
+2026/11/18 21:46:36 INFO dropped model findings lib=review sha=9223530 path=test/org/mockitousage/MethodsImpl.java count=1
+2026/11/18 21:58:41 INFO dropped model findings lib=review sha=9223530 path=test/org/mockitousage/basicapi/UsingVarargsTest.java count=1
+Mockito-34                                    without 3/3  with 0/0  
+2026/11/18 23:23:16 INFO dropped model findings lib=review sha=90b8489 path=src/org/mockito/internal/progress/HandyReturnValues.java count=2
+2026/11/18 23:24:41 INFO dropped model findings lib=review sha=90b8489 path=src/org/mockito/internal/util/Primitives.java count=1
+Mockito-35                                    without 5/5  with 0/0  
+2026/11/18 23:27:29 INFO dropped model findings lib=review sha=3fefc4e path=src/org/mockito/exceptions/Reporter.java count=2
+2026/11/18 23:29:06 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n  \"change\": \"The commit removes the `safelyGetMockName` helper call from error messages in `Reporter.java`, replacing it with direct use of `undesired.getMock()` or `matchingMock`, and simplifies `R"
+2026/11/18 23:29:06 WARN model could not review file lib=review sha=3fefc4e path=test/org/mockito/exceptions/ReporterTest.java err="the model stopped writing words after: {\n  \"change\": \"The commit removes the `safelyGetMockName` helper call from error messages in `Reporter.java`, replacing it with direct use of `undesired.getMock()` or `matchingMock`, and simplifies `R"
+Mockito-4                                     without 0/0  with 0/0  
+iipc-jwarc-d47a479c                           without 1/2  with 0/0  
+2026/11/18 23:33:58 INFO dropped model findings lib=review sha=2e15243 path=test/org/netpreserve/jwarc/cdx/CdxRequestEncoderTest.java count=1
+iipc-jwarc-e00ce46c                           without 1/1  with 0/0  
+retel-io-ari-proxy-610e9b67                   without 0/0  with 0/0  checkout: fatal: cannot change to '/Users/abx/.cache/codist-bench/repos/retel-io__ari-proxy.git': No such file or directory
+
+bugs located: one reading 67 of 120, with a second reading 0 of 120
+one reading: located by an alarm (not a note) 38 of 119 usable bugs

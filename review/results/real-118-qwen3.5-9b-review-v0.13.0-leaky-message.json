@@ -1,0 +1,1278 @@
+[
+ {
+  "Bug": "BrightSpots-rcv-076f75e2",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/network/brightspots/rcv/Tabulator.java",
+     "Title": "Incorrect winner selection in single-winner election with two remaining candidates below threshold",
+     "Source": "model",
+     "Line": 523,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 115.196126375
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/network/brightspots/rcv/Tabulator.java": [
+    523,
+    524,
+    525,
+    551,
+    552,
+    553
+   ]
+  }
+ },
+ {
+  "Bug": "BrightSpots-rcv-c80e6272",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/network/brightspots/rcv/ResultsWriter.java",
+     "Title": "generateSummarySpreadsheet() has 22 paths",
+     "Source": "rule",
+     "Line": 285,
+     "Located": false
+    }
+   ],
+   "Located": 0,
+   "Took": 107.925691375
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/network/brightspots/rcv/ResultsWriter.java": [
+    378,
+    379,
+    380,
+    381,
+    397,
+    398,
+    399,
+    423,
+    424,
+    425
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-15",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java",
+     "Title": "Empty list return breaks default value fallback logic",
+     "Source": "model",
+     "Line": 117,
+     "Located": true
+    },
+    {
+     "Path": "src/java/org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java",
+     "Title": "Null return value breaks default value fallback logic",
+     "Source": "model",
+     "Line": 117,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 141.819002792
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli2/commandline/WriteableCommandLineImpl.java": [
+    112,
+    113,
+    116,
+    117,
+    118,
+    121,
+    122,
+    123,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-18",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 55.595509083
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/PosixParser.java": [
+    128,
+    132,
+    133,
+    134,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    245,
+    247
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-26",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli/OptionBuilder.java",
+     "Title": "Missing reset on error path causes state leakage",
+     "Source": "model",
+     "Line": 329,
+     "Located": false,
+     "Note": true
+    }
+   ],
+   "Located": 0,
+   "Took": 111.060219041
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/OptionBuilder.java": [
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-27",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli/OptionGroup.java",
+     "Title": "Missing null check causes crash on intentional reset",
+     "Source": "model",
+     "Line": 91,
+     "Located": true
+    },
+    {
+     "Path": "src/java/org/apache/commons/cli/OptionGroup.java",
+     "Title": "Incorrect comparison key breaks mutual exclusion logic",
+     "Source": "model",
+     "Line": 91,
+     "Located": true
+    }
+   ],
+   "Located": 2,
+   "Took": 269.393139584
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/OptionGroup.java": [
+    91,
+    93
+   ],
+   "src/java/org/apache/commons/cli/Parser.java": null
+  }
+ },
+ {
+  "Bug": "Cli-32",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/cli/HelpFormatter.java",
+     "Title": "findWrapPos() has 16 paths",
+     "Source": "rule",
+     "Line": 901,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 112.292494458
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/cli/HelpFormatter.java": [
+    892,
+    903,
+    904,
+    934,
+    935,
+    937,
+    938,
+    939,
+    940,
+    941,
+    942,
+    943,
+    944
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-36",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/cli/Options.java",
+     "Title": "Loss of insertion order in option groups map violates team rules",
+     "Source": "model",
+     "Line": 61,
+     "Located": true
+    },
+    {
+     "Path": "src/main/java/org/apache/commons/cli/OptionGroup.java",
+     "Title": "Loss of insertion order in option storage",
+     "Source": "model",
+     "Line": 37,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 268.944749542
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/cli/OptionGroup.java": [
+    22,
+    37
+   ],
+   "src/main/java/org/apache/commons/cli/Options.java": [
+    24,
+    61
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-38",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/cli/DefaultParser.java",
+     "Title": "Reintroduction of bug: concatenated short options are no longer recognized correctly",
+     "Source": "model",
+     "Line": 310,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 114.854187333
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/cli/DefaultParser.java": [
+    310
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-4",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli/Parser.java",
+     "Title": "Regression: Error message format broken by reintroducing a bug",
+     "Source": "model",
+     "Line": 298,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 181.352721833
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/Parser.java": [
+    298
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-7",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli2/builder/PatternBuilder.java",
+     "Title": "Loss of insertion-order preservation breaks deterministic option ordering",
+     "Source": "model",
+     "Line": 67,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 1,
+   "Took": 196.853454375
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli2/builder/PatternBuilder.java": [
+    19,
+    67
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-9",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/cli/Parser.java",
+     "Title": "Error message format broken for multiple missing options",
+     "Source": "model",
+     "Line": 319,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 168.4026175
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/Parser.java": [
+    322
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-1",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
+     "Title": "CRLF line endings are now double-counted",
+     "Source": "model",
+     "Line": 91,
+     "Located": true
+    },
+    {
+     "Path": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
+     "Title": "CR-only line endings are no longer counted as new lines",
+     "Source": "model",
+     "Line": 59,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 220.787774625
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java": [
+    57,
+    58,
+    59,
+    88,
+    89,
+    91,
+    95
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-11",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVParser.java",
+     "Title": "NullPointerException on null header value",
+     "Source": "model",
+     "Line": 384,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 129.2829135
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVParser.java": [
+    384
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-12",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "EXCEL format incorrectly loses support for missing column names",
+     "Source": "model",
+     "Line": 218,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 148.204685875
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    209,
+    210,
+    211,
+    212,
+    215,
+    218
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-13",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "MySQL format no longer supports null values as “N” strings, causing data loss.",
+     "Source": "model",
+     "Line": 318,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 1,
+   "Took": 164.267891791
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    299,
+    318
+   ],
+   "src/main/java/org/apache/commons/csv/CSVPrinter.java": [
+    139
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-14",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "printAndQuote() has 28 paths",
+     "Source": "rule",
+     "Line": 1001,
+     "Located": false
+    }
+   ],
+   "Located": 0,
+   "Took": 153.773773791,
+   "Error": "Codist learned 1 check from this fix; it will look for the same mistake in later commits."
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    1038,
+    1039
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-15",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "printAndQuote() has 29 paths",
+     "Source": "rule",
+     "Line": 1151,
+     "Located": false
+    }
+   ],
+   "Located": 0,
+   "Took": 167.835871,
+   "Error": "Codist learned 1 check from this fix; it will look for the same mistake in later commits."
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    1189,
+    1190,
+    1191,
+    1192
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-16",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 95.888356042
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVParser.java": [
+    522,
+    523,
+    524,
+    525,
+    526,
+    527,
+    528,
+    529,
+    530,
+    531,
+    533,
+    534,
+    535,
+    536,
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    545,
+    546,
+    547,
+    548,
+    549,
+    550,
+    551,
+    552,
+    553,
+    555,
+    556,
+    557,
+    558,
+    559,
+    561,
+    562,
+    564,
+    565,
+    566,
+    567,
+    568,
+    569,
+    570
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-4",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVParser.java",
+     "Title": "Null pointer exception reintroduced in getHeaderMap() when headerMap is null",
+     "Source": "model",
+     "Line": 288,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 1,
+   "Took": 71.679075417
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVParser.java": [
+    284,
+    288
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-8",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "Duplicate header validation is deferred and may be skipped",
+     "Source": "model",
+     "Line": 313,
+     "Located": true,
+     "Note": true
+    },
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "Constructor fails to reject duplicate headers",
+     "Source": "model",
+     "Line": 313,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 193.793863125
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    158,
+    313,
+    661,
+    662,
+    663,
+    664,
+    665,
+    666,
+    667
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-10",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/Streams.java",
+     "Title": "Resource leak reintroduced by suppressing warning without fixing the root cause",
+     "Source": "model",
+     "Line": 75,
+     "Located": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+     "Title": "Custom adapter for primitive fields is incorrectly wrapped, breaking type fidelity and causing ClassCastException when a",
+     "Source": "model",
+     "Line": 114,
+     "Located": true
+    }
+   ],
+   "Located": 2,
+   "Took": 420.281037625
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java": [
+    27
+   ],
+   "gson/src/main/java/com/google/gson/internal/Streams.java": [
+    75
+   ],
+   "gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java": [
+    108,
+    113,
+    114,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140
+   ],
+   "gson/src/main/java/com/google/gson/internal/bind/TypeAdapterRuntimeTypeWrapper.java": [
+    23,
+    24,
+    25
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-13",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/stream/JsonReader.java",
+     "Title": "peekNumber() has 37 paths",
+     "Source": "rule",
+     "Line": 641,
+     "Located": false
+    }
+   ],
+   "Located": 0,
+   "Took": 119.633850084
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java": [
+    731
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-15",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 76.433338042
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/stream/JsonWriter.java": [
+    494,
+    497
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-17",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java",
+     "Title": "Null safety check removed causing serialization crash for null dates",
+     "Source": "model",
+     "Line": 87,
+     "Located": false
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java",
+     "Title": "Null deserialization replaced with exception causing failure for optional null fields",
+     "Source": "model",
+     "Line": 95,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 392.477428833
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java": [
+    95,
+    96
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-2",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+     "Title": "Commit message contradicts code intent: reintroducing logic that may have been removed to fix a bug causes regression if",
+     "Source": "model",
+     "Line": 826,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 1,
+   "Took": 187.459934542
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    821,
+    822,
+    825,
+    826
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-3",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java",
+     "Title": "Loss of concurrent map implementation causing thread-safety issues and incorrect type fidelity",
+     "Source": "model",
+     "Line": 175,
+     "Located": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java",
+     "Title": "ConcurrentSkipListMap requests now return TreeMap instead of ConcurrentSkipListMap",
+     "Source": "model",
+     "Line": 175,
+     "Located": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java",
+     "Title": "ConcurrentHashMap requests now return LinkedTreeMap instead of ConcurrentHashMap",
+     "Source": "model",
+     "Line": 190,
+     "Located": true
+    }
+   ],
+   "Located": 3,
+   "Took": 523.680245333
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java": [
+    19,
+    20,
+    21,
+    22,
+    61,
+    73,
+    101,
+    133,
+    140,
+    155,
+    161,
+    167,
+    175,
+    177,
+    184,
+    190,
+    205
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-4",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/stream/JsonReader.java",
+     "Title": "doPeek() has 48 paths",
+     "Source": "rule",
+     "Line": 465,
+     "Located": false
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/stream/JsonWriter.java",
+     "Title": "Strict mode incorrectly rejects primitive top-level values",
+     "Source": "model",
+     "Line": 625,
+     "Located": true,
+     "Note": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/stream/JsonWriter.java",
+     "Title": "Commit message contradicts code behavior: code introduces a restriction that the message claims is a bug",
+     "Source": "model",
+     "Line": 625,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 348.358117584
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java": [
+    27,
+    574,
+    575,
+    576,
+    586,
+    587,
+    588,
+    589
+   ],
+   "gson/src/main/java/com/google/gson/stream/JsonWriter.java": [
+    33,
+    133,
+    225,
+    325,
+    418,
+    435,
+    454,
+    466,
+    483,
+    495,
+    518,
+    611,
+    612,
+    613,
+    616,
+    625,
+    626,
+    627,
+    628
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-7",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/stream/JsonReader.java",
+     "Title": "Missing handling for unquoted numeric strings in nextLong() and nextInt() causes parsing failure for valid JSON numbers.",
+     "Source": "model",
+     "Line": 954,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 228.964850708
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java": [
+    954,
+    955,
+    1182,
+    1183
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-9",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/JsonTreeWriter.java",
+     "Title": "Missing null check in value(boolean) causes incorrect serialization of null Boolean values",
+     "Source": "model",
+     "Line": 157,
+     "Located": false,
+     "Note": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+     "Title": "Null check removed from public API causes crash on null input",
+     "Source": "model",
+     "Line": 165,
+     "Located": true,
+     "Note": true
+    },
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+     "Title": "Commit message contradicts code change intent",
+     "Source": "model",
+     "Line": 165,
+     "Located": true,
+     "Note": true
+    }
+   ],
+   "Located": 2,
+   "Took": 295.83901675
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/internal/bind/JsonTreeWriter.java": null,
+   "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java": [
+    165,
+    166,
+    167,
+    168
+   ],
+   "gson/src/main/java/com/google/gson/stream/JsonWriter.java": null
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-102",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java",
+     "Title": "createContextual() has 17 paths",
+     "Source": "rule",
+     "Line": 61,
+     "Located": false
+    }
+   ],
+   "Located": 0,
+   "Took": 94.110092041
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java": [
+    65,
+    66,
+    67
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-17",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 110.183288917
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java": [
+    176,
+    177,
+    178
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-3",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java",
+     "Title": "Inconsistent null handling between main loop and custom deserialization path",
+     "Source": "model",
+     "Line": 95,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 249.854218875,
+   "Error": "Codist learned 1 check from this fix; it will look for the same mistake in later commits."
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/deser/std/StringArrayDeserializer.java": [
+    66,
+    95
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-57",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java",
+     "Title": "Regression: Offset and length ignored in parser creation",
+     "Source": "model",
+     "Line": 1441,
+     "Located": true
+    }
+   ],
+   "Located": 1,
+   "Took": 197.9635735
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/ObjectReader.java": [
+    1441
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-69",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 100.030016583
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java": [
+    165,
+    166,
+    168,
+    169,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    194,
+    296,
+    304,
+    308,
+    330
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-72",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 83.015316208
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java": null
+  }
+ }
+]

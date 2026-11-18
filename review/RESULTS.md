@@ -1,5 +1,29 @@
 # Review measurements
 
+## The 120 development bugs with Codist v0.9.0, 2026-11-18
+
+codist-review v0.13.0 with `qwen3.5:9b`, one reading (`-once`), each bug committed back into its fixed version with a
+message that only names the changed files, and an empty store. 119 usable (`retel-io/ari-proxy` is gone from GitHub).
+
+| | bugs of 119 |
+|---|---|
+| a finding within 3 lines of the bug (located, an upper bound) | 67 |
+| named the bug (read against the real fix) | **49** |
+| related | 12 |
+| right line, wrong reason | 6 |
+| named and shown as an alarm, not a note | 28 |
+
+5.2 hours. The old `qwen2.5-coder:14b` run named 51 of 118, but only 25 bugs are named by both; together 75 of 119.
+False alarms were not measured (that needs the fixed versions reviewed).
+
+The first try is kept as `results/real-118-qwen3.5-9b-review-v0.13.0-leaky-message.json` and is not comparable: it
+committed every bug as "Reintroduce the bug", and Codist reads commit messages. Mockito keeps tests in a top-level
+`test/`, which the main-code filter does not skip; 7 located findings were in test files, none decided a label.
+
+Raw results: `results/real-118-qwen3.5-9b-review-v0.13.0.json`, labels `results/labels-qwen3.5-9b-v0.13.0.json`,
+logs `results/real-118-run.log` and `results/real-118-retry.log` (26 bugs whose fix diff failed during the first pass,
+run again). Rerun with `go run ./review -once -model qwen3.5:9b -out <file> bugs-118.txt` (about 5 hours).
+
 ## A second reading, not measured yet
 
 `go run ./review` now compares one reading of each file with two (`review.Options{Twice: true}`, codist-review

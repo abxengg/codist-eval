@@ -1,0 +1,177 @@
+BrightSpots-rcv-076f75e2                      without 1/1  with 0/0  
+2026/11/18 01:39:36 INFO dropped model findings lib=review sha=d5f477b path=src/main/java/network/brightspots/rcv/ResultsWriter.java count=1
+BrightSpots-rcv-c80e6272                      without 0/1  with 0/0  
+Cli-15                                        without 2/2  with 0/0  
+Cli-18                                        without 0/0  with 0/0  
+Cli-26                                        without 1/2  with 0/0  
+2026/11/18 01:48:02 INFO dropped model findings lib=review sha=371f5f5 path=src/java/org/apache/commons/cli/OptionGroup.java count=1
+2026/11/18 01:48:46 INFO dropped model findings lib=review sha=371f5f5 path=src/java/org/apache/commons/cli/Parser.java count=1
+Cli-27                                        without 1/1  with 0/0  
+2026/11/18 01:50:46 INFO dropped model findings lib=review sha=8daf0a3 path=src/main/java/org/apache/commons/cli/HelpFormatter.java count=1
+Cli-32                                        without 1/1  with 0/0  
+Cli-36                                        without 2/2  with 0/0  
+Cli-38                                        without 1/1  with 0/0  
+Cli-4                                         without 0/0  with 0/0  
+Cli-7                                         without 0/0  with 0/0  
+Cli-9                                         without 0/0  with 0/0  
+2026/11/18 01:58:35 INFO dropped model findings lib=review sha=7ad899a path=src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java count=1
+Csv-1                                         without 1/1  with 0/0  
+Csv-11                                        without 1/1  with 0/0  
+Csv-12                                        without 1/1  with 0/0  
+Csv-13                                        without 2/2  with 0/0  
+2026/11/18 02:09:27 INFO dropped model findings lib=review sha=c72eba2 path=src/main/java/org/apache/commons/csv/CSVFormat.java count=2
+Csv-14                                        without 0/1  with 0/0  
+Csv-15                                        without 0/1  with 0/0  
+Csv-16                                        without 0/0  with 0/0  
+Csv-4                                         without 1/1  with 0/0  
+Csv-8                                         without 0/0  with 0/0  
+2026/11/18 02:16:22 INFO dropped model findings lib=review sha=0bb7759 path=gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java count=1
+Gson-10                                       without 0/0  with 0/0  
+2026/11/18 02:18:27 INFO dropped model findings lib=review sha=058056f path=gson/src/main/java/com/google/gson/stream/JsonReader.java count=2
+Gson-13                                       without 0/1  with 0/0  
+2026/11/18 02:19:24 INFO dropped model findings lib=review sha=975103f path=gson/src/main/java/com/google/gson/stream/JsonWriter.java count=1
+Gson-15                                       without 0/0  with 0/0  
+2026/11/18 02:20:44 INFO dropped model findings lib=review sha=aa9f93d path=gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java count=1
+Gson-17                                       without 0/1  with 0/0  
+Gson-2                                        without 1/1  with 0/0  
+Gson-3                                        without 1/1  with 0/0  
+2026/11/18 02:31:08 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n  \"change\": \"The commit updates documentation links from RFC 7159 to RFC 4627 and adds a lenient mode check when the top-level value is a double-quoted string or an unquoted literal, whereas previou"
+2026/11/18 02:31:08 WARN model could not review file lib=review sha=0afc164 path=gson/src/main/java/com/google/gson/stream/JsonReader.java err="the model stopped writing words after: {\n  \"change\": \"The commit updates documentation links from RFC 7159 to RFC 4627 and adds a lenient mode check when the top-level value is a double-quoted string or an unquoted literal, whereas previou"
+Gson-4                                        without 0/1  with 0/0  
+Gson-7                                        without 1/1  with 0/0  
+2026/11/18 02:40:46 INFO dropped model findings lib=review sha=176f65f path=gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java count=2
+Gson-9                                        without 0/1  with 0/0  
+2026/11/18 02:42:14 INFO dropped model findings lib=review sha=0ac7bb9 path=src/main/java/com/fasterxml/jackson/databind/ser/std/DateTimeSerializerBase.java count=1
+JacksonDatabind-102                           without 0/1  with 0/0  
+2026/11/18 02:43:55 INFO dropped model findings lib=review sha=4edf9d1 path=src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java count=1
+JacksonDatabind-17                            without 0/0  with 0/0  
+JacksonDatabind-3                             without 2/2  with 0/0  
+JacksonDatabind-57                            without 1/1  with 0/0  
+2026/11/18 02:53:43 INFO dropped model findings lib=review sha=f1a4a13 path=src/main/java/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java count=1
+JacksonDatabind-69                            without 0/0  with 0/0  
+2026/11/18 02:54:47 INFO dropped model findings lib=review sha=4bd2021 path=src/main/java/com/fasterxml/jackson/databind/deser/impl/InnerClassProperty.java count=1
+JacksonDatabind-72                            without 0/0  with 0/0  
+2026/11/18 02:57:08 INFO dropped model findings lib=review sha=c7fa793 path=src/main/java/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java count=1
+JacksonDatabind-73                            without 1/1  with 0/0  
+2026/11/18 03:00:09 INFO dropped model findings lib=review sha=6f15d11 path=src/main/java/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java count=1
+2026/11/18 03:01:35 INFO dropped model findings lib=review sha=6f15d11 path=src/main/java/com/fasterxml/jackson/databind/introspect/ObjectIdInfo.java count=2
+2026/11/18 03:03:12 INFO dropped model findings lib=review sha=6f15d11 path=src/main/java/com/fasterxml/jackson/databind/ser/std/BeanSerializerBase.java count=1
+JacksonDatabind-79                            without 1/2  with 0/0  
+JacksonDatabind-87                            without 0/0  with 0/0  no main code in the fix
+JacksonDatabind-93                            without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:04:40 INFO dropped model findings lib=review sha=8f2a87e path=src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java count=1
+2026/11/18 03:05:24 INFO dropped model findings lib=review sha=8f2a87e path=src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java count=1
+JxPath-1                                      without 0/2  with 0/0  
+JxPath-10                                     without 0/0  with 0/0  no main code in the fix
+JxPath-11                                     without 2/2  with 0/0  
+JxPath-16                                     without 0/2  with 0/0  
+2026/11/18 03:13:52 INFO dropped model findings lib=review sha=85fad4a path=src/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java count=1
+JxPath-17                                     without 1/1  with 0/0  
+JxPath-18                                     without 2/2  with 0/0  
+JxPath-22                                     without 0/0  with 0/0  no main code in the fix
+JxPath-3                                      without 0/1  with 0/0  
+2026/11/18 03:22:02 INFO dropped model findings lib=review sha=5a663ae path=src/java/org/apache/commons/jxpath/ri/model/NodePointer.java count=1
+JxPath-5                                      without 0/0  with 0/0  
+JxPath-6                                      without 2/2  with 0/0  
+Lang-16                                       without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:29:58 INFO dropped model findings lib=review sha=9ce2eaa path=src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java count=2
+Lang-17                                       without 0/0  with 0/0  
+Lang-20                                       without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:31:49 INFO dropped model findings lib=review sha=c0914d6 path=src/main/java/org/apache/commons/lang3/math/NumberUtils.java count=2
+Lang-27                                       without 0/1  with 0/0  
+Lang-34                                       without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:34:30 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n\"change\": \"The commit removes a check that rejected strings with a trailing decimal point (like '123.') when no type qualifier was present, and simplifies the condition for detecting non-digit chara"
+2026/11/18 03:34:30 WARN model could not review file lib=review sha=add7ad5 path=src/java/org/apache/commons/lang3/math/NumberUtils.java err="the model stopped writing words after: {\n\"change\": \"The commit removes a check that rejected strings with a trailing decimal point (like '123.') when no type qualifier was present, and simplifies the condition for detecting non-digit chara"
+Lang-36                                       without 0/2  with 0/0  
+Lang-41                                       without 0/0  with 0/0  no main code in the fix
+Lang-48                                       without 0/0  with 0/0  no main code in the fix
+Lang-58                                       without 0/0  with 0/0  no main code in the fix
+Lang-7                                        without 0/0  with 0/0  no main code in the fix
+Math-30                                       without 0/0  with 0/0  no main code in the fix
+Math-44                                       without 0/0  with 0/0  no main code in the fix
+Math-56                                       without 1/1  with 0/0  
+Math-58                                       without 0/0  with 0/0  no main code in the fix
+Math-59                                       without 1/1  with 0/0  
+2026/11/18 03:41:46 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n\"change\": \"The commit removed the implementation of the five-argument optimize method that used a specific startValue for the first iteration, replacing it with a stub that delegates to the four-arg"
+2026/11/18 03:41:46 WARN model could not review file lib=review sha=1d31ecc path=src/main/java/org/apache/commons/math/optimization/univariate/MultiStartUnivariateRealOptimizer.java err="the model stopped writing words after: {\n\"change\": \"The commit removed the implementation of the five-argument optimize method that used a specific startValue for the first iteration, replacing it with a stub that delegates to the four-arg"
+Math-62                                       without 0/0  with 0/0  
+Math-63                                       without 0/0  with 0/0  no main code in the fix
+Math-69                                       without 1/1  with 0/0  
+Math-82                                       without 0/0  with 0/0  no main code in the fix
+Math-87                                       without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:46:27 INFO dropped model findings lib=review sha=3aba6c1 path=test/org/mockito/internal/matchers/EqualityTest.java count=1
+Mockito-22                                    without 1/1  with 0/0  
+Mockito-24                                    without 0/0  with 0/0  no main code in the fix
+Mockito-26                                    without 0/0  with 0/0  no main code in the fix
+Mockito-28                                    without 0/0  with 0/0  no main code in the fix
+Mockito-3                                     without 0/0  with 0/0  no main code in the fix
+2026/11/18 03:48:58 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n  \"change\": \"The commit removes a test case that verified the parameters were included in the SmartNullPointerException message and changes the call to smartNullPointerException to omit the object a"
+2026/11/18 03:48:58 WARN model could not review file lib=review sha=9e7a242 path=src/org/mockito/exceptions/Reporter.java err="the model stopped writing words after: {\n  \"change\": \"The commit removes a test case that verified the parameters were included in the SmartNullPointerException message and changes the call to smartNullPointerException to omit the object a"
+2026/11/18 03:51:02 INFO dropped model findings lib=review sha=9e7a242 path=test/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNullsTest.java count=1
+Mockito-30                                    without 1/1  with 0/0  
+2026/11/18 03:53:14 INFO dropped model findings lib=review sha=2b4d945 path=test/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNullsTest.java count=1
+Mockito-31                                    without 1/1  with 0/0  
+Mockito-34                                    without 0/0  with 0/0  no main code in the fix
+Mockito-35                                    without 0/0  with 0/0  no main code in the fix
+Mockito-4                                     without 0/0  with 0/0  no main code in the fix
+Moderocky-ByteSkript-1dce2997                 without 0/0  with 0/0  
+TheAlgorithms-Java-4f151498                   without 1/1  with 0/0  
+TheAlgorithms-Java-96c1a966                   without 1/1  with 0/0  
+aws-aws-secretsmanager-jdbc-d25e52d6          without 0/0  with 0/0  
+2026/11/18 04:00:04 INFO dropped model findings lib=review sha=e4a98c1 path=src/main/software/amazon/event/ruler/JsonRuleCompiler.java count=1
+2026/11/18 04:01:27 INFO dropped model findings lib=review sha=e4a98c1 path=src/main/software/amazon/event/ruler/RuleCompiler.java count=1
+aws-event-ruler-68481127                      without 0/2  with 0/0  
+2026/11/18 04:02:22 INFO dropped model findings lib=review sha=bad8cb4 path=src/main/java/bsh/Operators.java count=1
+beanshell-beanshell-f345606a                  without 0/1  with 0/0  
+cdimascio-dotenv-java-bbfbcfa6                without 1/1  with 0/0  
+cloudsimplus-cloudsimplus-61c8b942            without 1/1  with 0/0  
+2026/11/18 04:09:52 INFO dropped model findings lib=review sha=24b7799 path=src/main/java/crawlercommons/robots/SimpleRobotRulesParser.java count=1
+crawler-commons-crawler-commons-2c2cb3bf      without 0/1  with 0/0  
+crowdin-crowdin-api-client-java-f0f22b2b      without 1/1  with 0/0  
+dmak-jaxb-xew-plugin-f4893513                 without 1/1  with 0/0  
+gradle-common-custom-user-data-gradle-plugin-982c7798 without 1/1  with 0/0  
+iipc-jwarc-d47a479c                           without 0/0  with 0/0  no main code in the fix
+iipc-jwarc-e00ce46c                           without 0/0  with 0/0  no main code in the fix
+2026/11/18 04:16:58 INFO dropped model findings lib=review sha=d12d516 path=src/main/java/org/jsoup/nodes/Element.java count=1
+jhy-jsoup-11191925                            without 0/0  with 0/0  
+jhy-jsoup-195f484b                            without 2/2  with 0/0  
+jhy-jsoup-1e69577e                            without 0/0  with 0/0  
+2026/11/18 04:23:22 INFO dropped model findings lib=review sha=ed3c8c9 path=src/main/java/org/jsoup/parser/HtmlTreeBuilder.java count=1
+2026/11/18 04:30:26 INFO dropped model findings lib=review sha=ed3c8c9 path=src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java count=1
+jhy-jsoup-220a3b21                            without 1/1  with 0/0  
+jhy-jsoup-401c8b01                            without 0/0  with 0/0  
+jhy-jsoup-45ed0023                            without 1/1  with 0/0  
+2026/11/18 04:38:16 INFO dropped model findings lib=review sha=260538b path=src/main/java/org/jsoup/helper/W3CDom.java count=2
+jhy-jsoup-4a278e9b                            without 0/0  with 0/0  
+jhy-jsoup-a3495822                            without 1/1  with 0/0  
+2026/11/18 04:42:46 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n\"change\": \"The commit removes the `UnsupportedEncodingException` and `URLDecoder.decode` calls, changing the `encodeUrl` method to pass raw URL components directly to the `URI` constructor instead o"
+2026/11/18 04:42:46 WARN model could not review file lib=review sha=4bb6dbc path=src/main/java/org/jsoup/helper/HttpConnection.java err="the model stopped writing words after: {\n\"change\": \"The commit removes the `UnsupportedEncodingException` and `URLDecoder.decode` calls, changing the `encodeUrl` method to pass raw URL components directly to the `URI` constructor instead o"
+jhy-jsoup-a96ebc95                            without 0/0  with 0/0  
+jhy-jsoup-d126488d                            without 2/2  with 0/0  
+jitterted-ensembler-0963194c                  without 0/0  with 0/0  
+2026/11/18 04:49:48 INFO dropped model findings lib=review sha=91fea96 path=src/main/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryView.java count=1
+jitterted-ensembler-0e512e5b                  without 0/0  with 0/0  
+jitterted-ensembler-6207c9d4                  without 1/1  with 0/0  
+2026/11/18 04:53:55 INFO dropped model findings lib=review sha=52ea8e6 path=src/main/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryView.java count=1
+jitterted-ensembler-c9faf3fb                  without 0/0  with 0/0  
+klausbrunner-solarpositioning-4d35aecb        without 2/2  with 0/0  
+retel-io-ari-proxy-610e9b67                   without 0/0  with 0/0  checkout: fatal: cannot change to '/Users/abx/.cache/codist-bench/repos/retel-io__ari-proxy.git': No such file or directory
+salesforce-grammaticus-cdf67a1a               without 0/0  with 0/0  
+2026/11/18 05:00:08 INFO dropped model findings lib=review sha=9b8d71d path=src/main/java/net/snowflake/client/jdbc/SnowflakeConnectString.java count=1
+2026/11/18 05:01:23 INFO dropped model findings lib=review sha=9b8d71d path=src/main/java/net/snowflake/client/jdbc/SnowflakeDriver.java count=1
+snowflakedb-snowflake-jdbc-002bc9bb           without 0/1  with 0/0  
+2026/11/18 05:03:56 INFO dropped model findings lib=review sha=831bda3 path=src/main/java/net/snowflake/client/jdbc/SnowflakeFileTransferAgent.java count=2
+snowflakedb-snowflake-jdbc-15a45aca           without 0/2  with 0/0  
+snowflakedb-snowflake-jdbc-7444f58c           without 1/1  with 0/0  
+2026/11/18 05:07:52 INFO dropped model findings lib=review sha=7cd3fab path=src/main/java/org/springframework/retry/backoff/BackOffPolicyBuilder.java count=1
+spring-projects-spring-retry-e6091f79         without 0/1  with 0/0  
+stellar-java-stellar-sdk-1461c2fc             without 1/1  with 0/0  
+stellar-java-stellar-sdk-15cc6d2c             without 1/1  with 0/0  
+w3c-epubcheck-0759a82a                        without 1/1  with 0/0  
+2026/11/18 05:15:15 INFO dropped model findings lib=review sha=06d2a05 path=src/main/java/com/adobe/epubcheck/tool/EpubChecker.java count=2
+w3c-epubcheck-49aacb23                        without 0/1  with 0/0  
+2026/11/18 05:16:24 INFO dropped model findings lib=review sha=dba48ff path=src/main/java/org/xtx/ut4converter/t3d/T3DActor.java count=1
+xtremexp-UT4X-Converter-e719841e              without 0/0  with 0/0  
+
+bugs located: one reading 47 of 120, with a second reading 0 of 120
+one reading: located by an alarm (not a note) 28 of 93 usable bugs
