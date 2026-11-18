@@ -33,6 +33,24 @@ LIST=bugs.txt python3 suggest.py && ./run.sh B bugs.txt   # the model's values
 `select_refactors.py` picks the refactoring commits; `refactors-labels.txt` is how each was labelled by hand before
 any result.
 
+## review: what the review finds on real bugs
+
+`go run ./review` takes a list of real bugs (`bugs-118.txt`: the 120 development bugs of the Defects4J and
+GitBug-Java benchmark Codist used before, one line each: id, clone folder, fixed commit). For each it checks out the
+fixed commit, reverses the fix in the main code, commits it with a neutral message ("Update <files>"), and reviews it
+from an empty store. A finding within 3 lines of a line the bug adds counts as located; whether it **names** the bug
+is labelled by hand. `-once` reviews once; without it, one reading is compared with two. A stopped run carries on.
+
+```bash
+go run ./review -once -model qwen3.5:9b -out results/run.json review/bugs-118.txt
+```
+
+Result with Codist v0.9.0 and `qwen3.5:9b`, 2026-11-18: of 119 bugs, a finding near 67, **the bug named in 49**, a
+related point in 12, the right line for the wrong reason in 6; 28 of the 49 shown as alarms. `qwen2.5-coder:14b`
+named 51 of 118 in 2026-11-04, but mostly different bugs: 25 both, 75 together. The fixed versions were not reviewed,
+so there is no false-alarm count yet ([#3](https://github.com/abxengg/codist-eval/issues/3)). Results and labels:
+[review/results](review/results), notes in [review/RESULTS.md](review/RESULTS.md).
+
 ## testbed: test projects with planted bugs
 
 Each script builds a small project commit by commit, with bugs planted in some commits and clean commits (a feature,
@@ -55,16 +73,17 @@ codist ~/dev/maze-lab                                    # let Codist review eve
 python3 testbed/score_shop_lab.py http://localhost:8080 testbed/maze-lab-truth.json
 ```
 
-Latest results, `qwen2.5-coder:14b` on a 16 GB laptop:
+Latest results, Codist v0.8.0 with `qwen3.5:9b` on a 16 GB laptop, each from an empty data folder:
 
-| Run | Found | Clean commits with an alarm |
+| Project | Found | Clean commits with an alarm |
 |---|---|---|
-| [records-lab-run2.txt](testbed/records-lab-run2.txt) | 18 of 19 | 0 of 5 |
-| [shop-lab-run3.txt](testbed/shop-lab-run3.txt) | 20 of 24 | 0 of 6 |
-| [maze-lab-run2.txt](testbed/maze-lab-run2.txt) | 15 of 19 | 2 of 3, both low |
+| records-lab | 18 of 19 | 1 of 5 |
+| shop-lab | 21 of 24 | 0 of 6 |
+| maze-lab | 18 of 19 | 0 of 3 |
 
-On the game, the misses are mostly changed numbers its spec states (an interval of 20 s set to 10 s, 60 updates per
-second set to 30). `triage/` holds the experiment behind the feedback triage model.
+Earlier runs with `qwen2.5-coder:14b` are kept as [records-lab-run2.txt](testbed/records-lab-run2.txt) (18 of 19),
+[shop-lab-run3.txt](testbed/shop-lab-run3.txt) (20 of 24) and [maze-lab-run2.txt](testbed/maze-lab-run2.txt)
+(15 of 19). The changed numbers the game's spec states, its misses then, are now caught without the model. `triage/` holds the experiment behind the feedback triage model.
 
 ## Licence
 

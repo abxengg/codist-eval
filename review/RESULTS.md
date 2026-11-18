@@ -24,11 +24,13 @@ Raw results: `results/real-118-qwen3.5-9b-review-v0.13.0.json`, labels `results/
 logs `results/real-118-run.log` and `results/real-118-retry.log` (26 bugs whose fix diff failed during the first pass,
 run again). Rerun with `go run ./review -once -model qwen3.5:9b -out <file> bugs-118.txt` (about 5 hours).
 
-## A second reading, not measured yet
+## A second reading, 2026-11-16
 
-`go run ./review` now compares one reading of each file with two (`review.Options{Twice: true}`, codist-review
-v0.11.0), on the same bugs. The callers option it used to compare was removed from codist-review after the result
-below. Run it on the 10-bug sample before trusting the second reading: about an hour with `qwen2.5-coder:7b`.
+`go run ./review` compares one reading of each file with two (`review.Options{Twice: true}`), on the 10 sample bugs
+(`../behaviour/bugs.txt`) with `qwen3.5:9b`, 53 minutes: 3 of 10 located with one reading, 3 of 10 with two. No gain, so the
+second reading stays for high-risk commits only. The 2026-11-18 run above suggests why: a second model names
+different bugs, a second reading by the same model mostly repeats the first
+([codist-review#8](https://github.com/abxengg/codist-review/issues/8)).
 
 ## Callers as context, 2026-11-07
 
