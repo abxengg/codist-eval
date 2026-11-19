@@ -1,0 +1,37 @@
+BrightSpots-rcv-076f75e2                      without 1/1  with 0/0  
+Cli-26                                        without 0/1  with 0/0  
+2026/11/19 21:29:02 INFO dropped model findings lib=review sha=b5fc29d path=src/main/java/org/apache/commons/csv/CSVPrinter.java count=1
+Csv-13                                        without 1/1  with 0/0  
+Csv-4                                         without 1/1  with 0/0  
+Gson-2                                        without 1/1  with 0/0  
+2026/11/19 21:32:26 INFO dropped model findings lib=review sha=b2d0392 path=gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java count=1
+Gson-3                                        without 0/0  with 0/0  
+JacksonDatabind-93                            without 1/1  with 0/0  
+JxPath-6                                      without 1/1  with 0/0  
+2026/11/19 21:37:54 INFO dropped model findings lib=review sha=cedf3b2 path=src/main/java/org/apache/commons/lang3/math/NumberUtils.java count=1
+Lang-7                                        without 1/2  with 0/0  
+Math-82                                       without 1/1  with 0/0  
+2026/11/19 21:46:10 INFO dropped model findings lib=review sha=c70be7a path=src/org/mockito/internal/configuration/injection/OngoingInjecter.java count=2
+2026/11/19 21:47:20 INFO dropped model findings lib=review sha=c70be7a path=test/org/mockitousage/bugs/InjectionByTypeShouldFirstLookForExactTypeThenAncestorTest.java count=1
+Mockito-28                                    without 7/7  with 0/0  
+2026/11/19 21:54:24 INFO dropped model findings lib=review sha=7890659 path=src/org/mockito/exceptions/Reporter.java count=1
+Mockito-30                                    without 1/2  with 0/0  
+Mockito-31                                    without 1/1  with 0/0  
+2026/11/19 22:06:17 INFO dropped model findings lib=review sha=4cfa0e8 path=src/org/mockito/internal/progress/HandyReturnValues.java count=4
+2026/11/19 22:07:35 INFO dropped model findings lib=review sha=4cfa0e8 path=src/org/mockito/internal/util/Primitives.java count=1
+Mockito-35                                    without 5/5  with 0/0  
+TheAlgorithms-Java-4f151498                   without 1/1  with 0/0  
+TheAlgorithms-Java-96c1a966                   without 1/1  with 0/0  
+2026/11/19 22:15:29 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\n\"change\": \"The commit removed the support for quoted values (single and double quotes) from the DOTENV_ENTRY_REGEX pattern, changing it from a complex regex that handled quotes to a simple one that "
+2026/11/19 22:15:29 WARN model could not review file lib=review sha=d471c92 path=src/main/java/io/github/cdimascio/dotenv/internal/DotenvParser.java err="the model stopped writing words after: {\n\"change\": \"The commit removed the support for quoted values (single and double quotes) from the DOTENV_ENTRY_REGEX pattern, changing it from a complex regex that handled quotes to a simple one that "
+cdimascio-dotenv-java-bbfbcfa6                without 0/0  with 0/0  
+2026/11/19 22:20:37 WARN model went silent; call ended lib=model model=qwen3.5:9b after=30s reply="{\"reason\": \"The code before the commit explicitly handled case-insensitive lookups by checking both the original name and its uppercase version before deciding whether to rename, whereas the code afte"
+2026/11/19 22:20:37 WARN the second look's choice failed; the confirmation stands lib=review sha=4fb7aaf path=src/main/java/com/sun/tools/xjc/addon/xew/XmlElementWrapperPlugin.java line=912 err="the model stopped writing words after: {\"reason\": \"The code before the commit explicitly handled case-insensitive lookups by checking both the original name and its uppercase version before deciding whether to rename, whereas the code afte"
+dmak-jaxb-xew-plugin-f4893513                 without 2/2  with 0/0  
+2026/11/19 22:24:04 INFO dropped model findings lib=review sha=c4c526f path=test/org/netpreserve/jwarc/cdx/CdxRequestEncoderTest.java count=1
+iipc-jwarc-d47a479c                           without 1/2  with 0/0  
+snowflakedb-snowflake-jdbc-7444f58c           without 1/1  with 0/0  
+stellar-java-stellar-sdk-15cc6d2c             without 1/1  with 0/0  
+
+bugs located: one reading 18 of 21, with a second reading 0 of 21
+one reading: located by an alarm (not a note) 6 of 21 usable bugs

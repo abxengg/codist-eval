@@ -1,0 +1,35 @@
+BrightSpots-rcv-076f75e2                      without 1/1  with 0/0  
+2026/11/19 22:38:53 INFO dropped model findings lib=review sha=86d01f6 path=src/java/org/apache/commons/cli/OptionBuilder.java count=2
+Cli-26                                        without 0/0  with 0/0  
+2026/11/19 22:41:47 INFO dropped model findings lib=review sha=51087a8 path=src/main/java/org/apache/commons/csv/CSVPrinter.java count=1
+Csv-13                                        without 2/2  with 0/0  
+Csv-4                                         without 1/1  with 0/0  
+Gson-2                                        without 1/1  with 0/0  
+Gson-3                                        without 1/1  with 0/0  
+JacksonDatabind-93                            without 0/0  with 0/0  
+JxPath-6                                      without 1/1  with 0/0  
+2026/11/19 23:06:43 INFO dropped model findings lib=review sha=bdfaec4 path=src/main/java/org/apache/commons/lang3/math/NumberUtils.java count=1
+Lang-7                                        without 1/2  with 0/0  
+Math-82                                       without 1/1  with 0/0  
+2026/11/19 23:24:53 INFO dropped model findings lib=review sha=d8f6ffd path=src/org/mockito/internal/configuration/injection/OngoingInjecter.java count=2
+2026/11/19 23:26:38 INFO dropped model findings lib=review sha=d8f6ffd path=test/org/mockitousage/bugs/InjectionByTypeShouldFirstLookForExactTypeThenAncestorTest.java count=1
+Mockito-28                                    without 3/3  with 0/0  
+2026/11/19 23:36:15 INFO dropped model findings lib=review sha=240613d path=src/org/mockito/exceptions/Reporter.java count=2
+2026/11/19 23:38:59 INFO dropped model findings lib=review sha=240613d path=test/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNullsTest.java count=1
+Mockito-30                                    without 1/1  with 0/0  
+Mockito-31                                    without 1/1  with 0/0  
+2026/11/19 23:56:37 INFO dropped model findings lib=review sha=b7b5f0d path=src/org/mockito/internal/progress/HandyReturnValues.java count=1
+2026/11/19 23:59:34 INFO dropped model findings lib=review sha=b7b5f0d path=test/org/mockitousage/bugs/NPEWithIsAClassMatcherTest.java count=1
+Mockito-35                                    without 4/4  with 0/0  
+TheAlgorithms-Java-4f151498                   without 1/1  with 0/0  
+TheAlgorithms-Java-96c1a966                   without 1/1  with 0/0  
+2026/11/20 00:06:48 INFO dropped model findings lib=review sha=6393655 path=src/main/java/io/github/cdimascio/dotenv/internal/DotenvParser.java count=1
+cdimascio-dotenv-java-bbfbcfa6                without 0/0  with 0/0  
+dmak-jaxb-xew-plugin-f4893513                 without 1/1  with 0/0  
+2026/11/20 00:12:40 INFO dropped model findings lib=review sha=4b5ff75 path=test/org/netpreserve/jwarc/cdx/CdxRequestEncoderTest.java count=1
+iipc-jwarc-d47a479c                           without 1/2  with 0/0  
+snowflakedb-snowflake-jdbc-7444f58c           without 1/1  with 0/0  
+stellar-java-stellar-sdk-15cc6d2c             without 1/1  with 0/0  
+
+bugs located: one reading 18 of 21, with a second reading 0 of 21
+one reading: located by an alarm (not a note) 9 of 21 usable bugs

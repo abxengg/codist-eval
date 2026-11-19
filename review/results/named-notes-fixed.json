@@ -1,0 +1,1301 @@
+[
+ {
+  "Bug": "BrightSpots-rcv-076f75e2",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/network/brightspots/rcv/Tabulator.java",
+     "Title": "Logic error in multi-seat election with threshold enabled: fails to select all winners when candidates equal remaining",
+     "Source": "model",
+     "Line": 553,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if (useTiebreakerIfNeeded \u0026\u0026 selectedWinners.size() \u003e 1) {\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "could not tell",
+       "detail": "The reviewer claims the condition at line 530 fails when candidates equal remaining seats, but the code shows that in this specific scenario (2 candidates for 2 seats), the condition `currentRoundTally.numActiveCandidates() - 1 == config.getNumberOfWinners()` evaluates to true (2-1=1, which equals 1 Proof quoted: if (useTiebreakerIfNeeded \u0026\u0026 selectedWinners.size() \u003e 1)."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 119.876864875
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/network/brightspots/rcv/Tabulator.java": [
+    523,
+    524,
+    525,
+    551,
+    552,
+    553
+   ]
+  }
+ },
+ {
+  "Bug": "Cli-26",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 78.769856458
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/cli/OptionBuilder.java": [
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-13",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+     "Title": "Javadoc and code disagree on null value handling for MySQL format",
+     "Source": "model",
+     "Line": 318,
+     "Located": true,
+     "Note": true,
+     "Doubt": "Codist could not find where this value becomes null in this code.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"public static final CSVFormat MYSQL = DEFAULT.withDelimiter(TAB).withEscape(BACKSLASH).withIgnoreEmptyLines(false) .withQuote(null).withRecordSeparator(LF);\", and that code is at the line it named."
+      },
+      {
+       "step": "quote",
+       "result": "note",
+       "detail": "Codist could not find where this value becomes null in this code."
+      }
+     ]
+    },
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+     "Title": "Null object handling removed causing potential crash or incorrect output for null values in quoted mode",
+     "Source": "model",
+     "Line": 139,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look at the code disagreed: The removed null check was replaced by a conversion in the public print method that ensures strValue is never null before being passed to the private print method.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"139|         if (format.isQuoteCharacterSet()) {\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "refuted",
+       "detail": "The removed null check was replaced by a conversion in the public print method that ensures strValue is never null before being passed to the private print method. Against: if (value == null) { final String nullString = format.getNullString(); strValue = nullString == null ? Constants.EMPTY : nullString; }."
+      }
+     ]
+    }
+   ],
+   "Located": 2,
+   "Took": 229.725164834
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVFormat.java": [
+    299,
+    318
+   ],
+   "src/main/java/org/apache/commons/csv/CSVPrinter.java": [
+    139
+   ]
+  }
+ },
+ {
+  "Bug": "Csv-4",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/csv/CSVParser.java",
+     "Title": "Null pointer exception on expected null return",
+     "Source": "model",
+     "Line": 288,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look could not find code that proves this.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return new LinkedHashMap\u003cString, Integer\u003e(this.headerMap);\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed, but guessing",
+       "detail": "The code directly passes the potentially null headerMap to the constructor without a null check, causing a NullPointerException when the map is null, which contradicts the previous behavior of returning null. Proof quoted: return new LinkedHashMap\u003cString, Integer\u003e(this.headerMap);."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 81.213323917
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/csv/CSVParser.java": [
+    284,
+    288
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-2",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+     "Title": "Silent failure on type mismatch in newTypeHierarchyFactory",
+     "Source": "model",
+     "Line": 826,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return clazz.isAssignableFrom(typeToken.getRawType()) ? (TypeAdapter\u003cT\u003e) typeAdapter : null;\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code returns null when the type is not assignable, which matches the reviewer's claim of silent failure instead of throwing an exception. Proof quoted: return clazz.isAssignableFrom(typeToken.getRawType()) ? (TypeAdapter\u003cT\u003e) typeAdapter : null;."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. Line 826 returns null instead of throwing JsonSyntaxException when the deserialized object does not match the expected type, causing silent data corruption."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The method signature change from newTypeHierarchyFactory(Class\u003cT1\u003e, TypeAdapter\u003cT1\u003e) to newTypeHierarchyFactory(Class\u003cTT\u003e, TypeAdapter\u003cTT\u003e) removes the compile-time guarantee that the adapter's read/write methods are compatible with the requested type, causing a silent failure where null is returned"
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 406.927026084
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    821,
+    822,
+    825,
+    826
+   ]
+  }
+ },
+ {
+  "Bug": "Gson-3",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java",
+     "Title": "Loss of thread-safe map implementations for ConcurrentNavigableMap and ConcurrentMap types",
+     "Source": "model",
+     "Line": 175,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look, made to choose, sided with the code: The removed imports for ConcurrentNavigableMap and ConcurrentMap are not present in the provided code snippet, making it impossible to verify if those checks were ever implemented or if their removal causes a loss of thread-safety as claimed by Reviewer B.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if (SortedMap.class.isAssignableFrom(rawType)) { return new ObjectConstructor\u003cT\u003e() { public T construct() { return (T) new TreeMap\u003cObject, Object\u003e(); } }; }\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code removes the specific check for ConcurrentNavigableMap and ConcurrentMap, causing requests for these types to fall through to generic SortedMap or Map handlers that create non-thread-safe implementations like TreeMap or LinkedHashMap. Proof quoted: return new ObjectConstructor\u003cT\u003e() { public T construct() { return (T) new TreeMap\u003cObject, Object\u003e(); } };."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The removed imports for ConcurrentNavigableMap and ConcurrentMap indicate that support for these types was intentionally dropped, making the change compliant with team rules."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked again with the claim listed second. The removed imports for ConcurrentNavigableMap and ConcurrentMap are not present in the provided code snippet, making it impossible to verify if those checks were ever implemented or if their removal causes a loss of thread-safety as claimed by Reviewer B."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 393.848077083
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java": [
+    19,
+    20,
+    21,
+    22,
+    61,
+    73,
+    101,
+    133,
+    140,
+    155,
+    161,
+    167,
+    175,
+    177,
+    184,
+    190,
+    205
+   ]
+  }
+ },
+ {
+  "Bug": "JacksonDatabind-93",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 52.409954
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerFactory.java": [
+    16
+   ],
+   "src/main/java/com/fasterxml/jackson/databind/jsontype/impl/SubTypeValidator.java": [
+    82,
+    83
+   ]
+  }
+ },
+ {
+  "Bug": "JxPath-6",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java",
+     "Title": "Missing context reset for InitialContext breaks evaluation isolation",
+     "Source": "model",
+     "Line": 57,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look could not choose between this claim and its opposite, so it settles nothing.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if (l instanceof InitialContext || l instanceof SelfContext) { l = ((EvalContext) l).getSingleNodePointer(); }\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The commit removed the explicit reset() call for InitialContext and SelfContext instances, leaving only the getSingleNodePointer() call which does not reset state. Proof quoted: if (l instanceof InitialContext || l instanceof SelfContext) {."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The removed reset() call was dead code because InitialContext and SelfContext are single-use contexts that cannot be reused after getSingleNodePointer() is called, so resetting them would have no effect on subsequent operations."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The removed code explicitly called reset() on InitialContext objects before extracting the single node pointer, a step necessary to ensure evaluation isolation that the new combined condition omits."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 396.454279958
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java": [
+    57,
+    61
+   ]
+  }
+ },
+ {
+  "Bug": "Lang-7",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+     "Title": "Invalid input '--' passes through createBigDecimal() without throwing NumberFormatException",
+     "Source": "model",
+     "Line": 725,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return new BigDecimal(str);\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The commit removed the check that threw NumberFormatException for strings starting with '--', causing such invalid input to be passed directly to new BigDecimal(str) without validation. Proof quoted: return new BigDecimal(str);."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The method documentation explicitly states that it throws NumberFormatException if the value cannot be converted, but the new code allows '--' to pass through without throwing an exception or returning null."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The comment on line 721 explicitly states that the check for '--' was removed because it accepts this as a legal value, but the code now passes 'new BigDecimal(str)' without any validation for '--', which causes a crash or wrong result when run with that input."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    },
+    {
+     "Path": "src/main/java/org/apache/commons/lang3/math/NumberUtils.java",
+     "Title": "createNumber() has 58 paths",
+     "Source": "rule",
+     "Line": 445,
+     "Located": false
+    }
+   ],
+   "Located": 1,
+   "Took": 256.997511167
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/lang3/math/NumberUtils.java": [
+    452,
+    453,
+    454,
+    455,
+    456,
+    457,
+    458,
+    724
+   ]
+  }
+ },
+ {
+  "Bug": "Math-82",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java",
+     "Title": "Division by zero in Minimum Ratio Test",
+     "Source": "model",
+     "Line": 81,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if (MathUtils.compareTo(tableau.getEntry(i, col), 0, epsilon) \u003e= 0) { double ratio = rhs / tableau.getEntry(i, col);\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The condition MathUtils.compareTo(tableau.getEntry(i, col), 0, epsilon) \u003e= 0 evaluates to true when the entry is zero (since compareTo returns 0 for equality), which then causes a division by zero in the subsequent line. Proof quoted: double ratio = rhs / tableau.getEntry(i, col);."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The condition MathUtils.compareTo(tableau.getEntry(i, col), 0, epsilon) \u003e= 0 includes values equal to zero (within epsilon), which causes division by zero in the subsequent ratio calculation."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The condition MathUtils.compareTo(tableau.getEntry(i, col), 0, epsilon) \u003e= 0 includes values equal to zero or within epsilon of zero, which causes division by zero in the subsequent ratio calculation."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 496.744329042
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java": [
+    80,
+    81,
+    82
+   ]
+  }
+ },
+ {
+  "Bug": "Mockito-28",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+     "Title": "Duplicate injection of mocks into multiple fields violates the 'injected once' rule",
+     "Source": "model",
+     "Line": 61,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"injectMockCandidate(fieldClass, mocks, fieldInstance);\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code passes the original 'mocks' set to injectMockCandidate without creating a copy, meaning injected mocks are not removed from the set and can be reused for subsequent fields. Proof quoted: injectMockCandidate(fieldClass, mocks, fieldInstance);."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The removed comment explicitly stated that mocks are injected only once by removing them from a copy of the set, but the new code passes the original set without removing used mocks, causing a single mock to be injected into multiple compatible fields."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The code after the commit removes the logic that created a copy of the mocks set to track which mocks were already used, causing a single mock to potentially be injected into multiple fields."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/mockito/internal/configuration/injection/FinalMockCandidateFilter.java",
+     "Title": "Return type change breaks caller expectations for injected mock instance",
+     "Source": "model",
+     "Line": 24,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"public boolean thenInject()\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "could not tell",
+       "detail": "The interface OngoingInjecter defines thenInject as returning a boolean, so changing the implementation to return true or false is correct and does not break caller expectations. Proof quoted: public boolean thenInject() {."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/mockito/internal/configuration/DefaultInjectionEngine.java",
+     "Title": "Comparator logic inverted causing incorrect field ordering for injection priority",
+     "Source": "model",
+     "Line": 34,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look could not choose between this claim and its opposite, so it settles nothing.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if(field1Type.isAssignableFrom(field2Type)) { return -1; }\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code returns -1 when field1 is assignable from field2, which places subtypes before superclasses in the sorted order, contradicting the 'supertypesLast' comment. Proof quoted: if(field1Type.isAssignableFrom(field2Type)) { return -1; }."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The comparator logic in line 34 returns -1 when field1Type is assignable from field2Type, which places subtypes before superclasses (since -1 means field1 comes before field2), matching the 'supertypesLast' variable name and the intended injection order of processing subtypes first."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The variable name 'supertypesLast' implies superclasses should appear after subtypes in the sorted list, but returning -1 when field1Type is assignable from field2Type places the subtype (field1) before the supertype (field2), which contradicts the intended ordering where subtypes must be processed/"
+      }
+     ]
+    }
+   ],
+   "Located": 3,
+   "Took": 925.580919791
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/org/mockito/internal/configuration/DefaultInjectionEngine.java": [
+    34,
+    37,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    53,
+    59,
+    61,
+    70,
+    71,
+    72,
+    73
+   ],
+   "src/org/mockito/internal/configuration/injection/FinalMockCandidateFilter.java": [
+    24,
+    32,
+    38,
+    39
+   ],
+   "src/org/mockito/internal/configuration/injection/OngoingInjecter.java": [
+    15,
+    17,
+    19
+   ],
+   "test/org/mockitousage/bugs/InjectionByTypeShouldFirstLookForExactTypeThenAncestorTest.java": [
+    3,
+    21,
+    22,
+    32,
+    33,
+    34,
+    38,
+    39,
+    40,
+    42
+   ]
+  }
+ },
+ {
+  "Bug": "Mockito-30",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java",
+     "Title": "Missing parameter in method call breaks contract or causes compilation error if callee expects two arguments.",
+     "Source": "model",
+     "Line": 56,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look could not choose between this claim and its opposite, so it settles nothing.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"new Reporter().smartNullPointerException(location);\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code explicitly calls smartNullPointerException with only one argument, which the reviewer claims is a missing parameter issue if the method expects two. Proof quoted: new Reporter().smartNullPointerException(location);."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The method call in line 56 passes only 'location' to smartNullPointerException, which matches the updated signature shown in the commit diff that removed the 'obj' parameter, so no compilation error or logic break occurs."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The definition of Reporter shows smartNullPointerException takes only one parameter (location), so passing obj causes a compilation error."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 510.615346333
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/org/mockito/exceptions/Reporter.java": [
+    7,
+    8,
+    61,
+    104,
+    107,
+    118,
+    128,
+    129,
+    137,
+    142,
+    146,
+    164,
+    181,
+    182,
+    191,
+    200,
+    209,
+    214,
+    224,
+    227,
+    235,
+    242,
+    259,
+    272,
+    302,
+    312,
+    313,
+    323,
+    325,
+    330,
+    335,
+    338,
+    341,
+    344,
+    353,
+    363,
+    373,
+    438,
+    479,
+    528
+   ],
+   "src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java": [
+    56
+   ],
+   "test/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNullsTest.java": null
+  }
+ },
+ {
+  "Bug": "Mockito-31",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java",
+     "Title": "Loss of argument details in toString error message for unstubbed mocks",
+     "Source": "model",
+     "Line": 52,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return 'SmartNull returned by unstubbed ' + invocation.getMethod().getName() + '() method on mock';\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code explicitly constructs the error message using only the method name without including the arguments, confirming the reviewer's claim that argument details are lost. Proof quoted: return 'SmartNull returned by unstubbed ' + invocation.getMethod().getName() + '() method on mock';."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The commit removes a helper method that formatted arguments into the error message, causing the toString error for unstubbed mocks to lose argument details which helps identify specific calls."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The commit changes line 52 to use invocation.getMethod().getName() directly instead of calling formatMethodCall(), which previously included the arguments in the error message, resulting in a loss of argument details that helps identify the specific call."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 327.759434708
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java": [
+    17,
+    18,
+    19,
+    52,
+    54
+   ],
+   "test/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNullsTest.java": [
+    13,
+    24,
+    28,
+    32,
+    34,
+    40,
+    44,
+    46,
+    47
+   ]
+  }
+ },
+ {
+  "Bug": "Mockito-35",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/org/mockito/Matchers.java",
+     "Title": "`isA` returns null instead of matched instance, breaking expected behavior for matchers that should return the value or",
+     "Source": "model",
+     "Line": 362,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look, made to choose, sided with the code: The javadoc for isA explicitly states it returns null, and the method signature indicates a generic return type without specifying a non-null instance, so returning null aligns with the documented contract.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return reportMatcher(new InstanceOf(clazz)).\u003cT\u003ereturnNull();\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code explicitly calls returnNull() instead of returning the matched instance, which confirms the reviewer's claim that isA returns null. Proof quoted: return reportMatcher(new InstanceOf(clazz)).\u003cT\u003ereturnNull();."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The javadoc for method isA explicitly states that it returns null, so changing the implementation to return null instead of a matched instance does not break any rule or cause a runtime problem."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked again with the claim listed second. The javadoc for isA explicitly states it returns null, and the method signature indicates a generic return type without specifying a non-null instance, so returning null aligns with the documented contract."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/mockito/Matchers.java",
+     "Title": "`eq` returns null instead of matched value, breaking expected behavior for matchers that should return the value or",
+     "Source": "model",
+     "Line": 479,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look, made to choose, sided with the code: The javadoc for eq(T value) explicitly states it returns null, and the implementation correctly returns null via returnNull(), so the code adheres to its own documentation.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return reportMatcher(new Equals(value)).\u003cT\u003ereturnNull();\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code explicitly calls returnNull() which returns null instead of the matched value, confirming the reviewer's claim. Proof quoted: return reportMatcher(new Equals(value)).\u003cT\u003ereturnNull();."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The javadoc for eq(T value) explicitly states it returns null, so returning null via returnNull() complies with the documented contract."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked again with the claim listed second. The javadoc for eq(T value) explicitly states it returns null, and the implementation correctly returns null via returnNull(), so the code adheres to its own documentation."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/mockito/Matchers.java",
+     "Title": "`same` returns null instead of matched reference, breaking expected behavior for matchers that should return the value",
+     "Source": "model",
+     "Line": 516,
+     "Located": true,
+     "Note": true,
+     "Doubt": "A second look, made to choose, sided with the code: The javadoc for the same method explicitly states it returns null, and changing the implementation to return null aligns with this documented contract rather than breaking a rule.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return reportMatcher(new Same(value)).\u003cT\u003ereturnNull();\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code explicitly calls returnNull() on the matcher result, which returns null instead of the matched reference as claimed. Proof quoted: return reportMatcher(new Same(value)).\u003cT\u003ereturnNull();."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked with the claim listed first. The javadoc for the same method explicitly states that it returns null, so changing the implementation to return null instead of the reference does not break any documented behavior or team rules."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the code",
+       "detail": "Asked again with the claim listed second. The javadoc for the same method explicitly states it returns null, and changing the implementation to return null aligns with this documented contract rather than breaking a rule."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/mockito/internal/util/Primitives.java",
+     "Title": "Misleading method name implies no null return but implementation can return null",
+     "Source": "model",
+     "Line": 25,
+     "Located": true,
+     "Note": true,
+     "Doubt": "Codist could not find where this value becomes null in this code.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"public static \u003cT\u003e T primitiveValueFor(Class\u003cT\u003e primitiveType) { return (T) primitiveValues.get(primitiveType); }\", and that code is at the line it named."
+      },
+      {
+       "step": "quote",
+       "result": "note",
+       "detail": "Codist could not find where this value becomes null in this code."
+      }
+     ]
+    }
+   ],
+   "Located": 4,
+   "Took": 1041.442870167
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/org/mockito/Matchers.java": [
+    362,
+    479,
+    516
+   ],
+   "src/org/mockito/internal/progress/HandyReturnValues.java": [
+    43
+   ],
+   "src/org/mockito/internal/util/Primitives.java": [
+    25
+   ],
+   "test/org/mockitousage/bugs/NPEWithIsAClassMatcherTest.java": [
+    17,
+    18,
+    19
+   ]
+  }
+ },
+ {
+  "Bug": "TheAlgorithms-Java-4f151498",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/thealgorithms/maths/FindMin.java",
+     "Title": "Missing null/empty check leads to crash instead of documented exception",
+     "Source": "model",
+     "Line": 33,
+     "Located": true,
+     "Note": true,
+     "Doubt": "Codist could not find where this value becomes null in this code.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"int min = array[0];\", and that code is at the line it named."
+      },
+      {
+       "step": "quote",
+       "result": "note",
+       "detail": "Codist could not find where this value becomes null in this code."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 44.710843667
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/thealgorithms/maths/FindMin.java": [
+    27,
+    29,
+    30,
+    33,
+    34,
+    35,
+    36
+   ]
+  }
+ },
+ {
+  "Bug": "TheAlgorithms-Java-96c1a966",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/thealgorithms/maths/FindMax.java",
+     "Title": "Missing null/empty check causes runtime crash on empty input",
+     "Source": "model",
+     "Line": 33,
+     "Located": true,
+     "Note": true,
+     "Doubt": "Codist could not find where this value becomes null in this code.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"int max = array[0];\", and that code is at the line it named."
+      },
+      {
+       "step": "quote",
+       "result": "note",
+       "detail": "Codist could not find where this value becomes null in this code."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 40.254588292
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/thealgorithms/maths/FindMax.java": [
+    27,
+    29,
+    30,
+    33,
+    34,
+    35,
+    36
+   ]
+  }
+ },
+ {
+  "Bug": "cdimascio-dotenv-java-bbfbcfa6",
+  "Without": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 60.2255725
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/io/github/cdimascio/dotenv/internal/DotenvParser.java": [
+    22
+   ]
+  }
+ },
+ {
+  "Bug": "dmak-jaxb-xew-plugin-f4893513",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/com/sun/tools/xjc/addon/xew/XmlElementWrapperPlugin.java",
+     "Title": "Missing case-insensitive collision check on case-sensitive filesystems",
+     "Source": "model",
+     "Line": 907,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"if (classes.containsKey(clazz.name())) {\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code only checks for an exact case match in the map key, failing to detect collisions on case-sensitive filesystems where a class named 'FOO' exists but the new class is named 'Foo'. Proof quoted: if (classes.containsKey(clazz.name())) {."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The generated Foo.java file uses lowercase 'Foo' for both the outer class and the inner class, which would cause a compilation error if the plugin fails to detect a collision with an existing uppercase 'FOO' class on a case-sensitive filesystem, making Reviewer A correct."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The team rule requires handling case-insensitive collisions on case-sensitive filesystems, which the removed code explicitly checked by looking up both the original name and its uppercase version."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 157.403982042
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/com/sun/tools/xjc/addon/xew/XmlElementWrapperPlugin.java": [
+    907,
+    908,
+    909,
+    912
+   ]
+  }
+ },
+ {
+  "Bug": "iipc-jwarc-d47a479c",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/org/netpreserve/jwarc/cdx/CdxRequestEncoder.java",
+     "Title": "Loss of form body content due to incorrect decoding fallback logic",
+     "Source": "model",
+     "Line": 59,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"out.append(URIs.percentPlusDecode(decodedBody));\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The reviewer is correct because removing the custom `percentEncodeNonPercent` wrapper means that if `URIs.percentPlusDecode` throws a `MalformedInputException` (as it would for an incomplete UTF-8 sequence like '%E2'), the exception propagates up instead of being caught by the surrounding try-catch, Proof quoted: out.append(URIs.percentPlusDecode(decodedBody));."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The change removes a custom percent-encoding fallback that was necessary to handle incomplete UTF-8 sequences (like '%E2') which cause URIs.percentPlusDecode to throw MalformedInputException, leading to data loss via binary encoding instead of proper form submission."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The commit removes a custom fallback handler for malformed UTF-8 sequences that would have triggered a binary encoding fallback, causing loss of form body content when the decoder encounters incomplete sequences like '%E2'."
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    },
+    {
+     "Path": "src/org/netpreserve/jwarc/cdx/CdxRequestEncoder.java",
+     "Title": "encodeJsonBody() has 29 paths",
+     "Source": "rule",
+     "Line": 66,
+     "Located": false
+    }
+   ],
+   "Located": 1,
+   "Took": 349.154446166
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/org/netpreserve/jwarc/cdx/CdxRequestEncoder.java": [
+    59,
+    153
+   ],
+   "test/org/netpreserve/jwarc/cdx/CdxRequestEncoderTest.java": null
+  }
+ },
+ {
+  "Bug": "snowflakedb-snowflake-jdbc-7444f58c",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/net/snowflake/client/config/SFClientConfigParser.java",
+     "Title": "Missing Windows path separator normalization for jarPath source",
+     "Source": "model",
+     "Line": 88,
+     "Located": true,
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return jarPath.substring(0, jarPath.lastIndexOf('/')) + File.separator + SF_CLIENT_CONFIG_FILE_NAME;\", and that code is at the line it named."
+      },
+      {
+       "step": "second look",
+       "result": "confirmed",
+       "detail": "The code removes the jar filename but fails to normalize forward slashes in the directory path on Windows before concatenating the backslash separator, which can result in an invalid mixed-path string. Proof quoted: return jarPath.substring(0, jarPath.lastIndexOf('/')) + File.separator + SF_CLIENT_CONFIG_FILE_NAME;."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked with the claim listed first. The removed code explicitly handled Windows path normalization by replacing forward slashes with backslashes, which the new code fails to do, potentially causing file resolution failures on Windows systems where jarPath contains forward slashes."
+      },
+      {
+       "step": "choice",
+       "result": "sided with the claim",
+       "detail": "Asked again with the claim listed second. The code before the commit explicitly handled Windows path normalization by replacing forward slashes with backslashes, while the code after the commit removes this logic and relies on File.separator without normalizing the source jarPath, which can result in invalid paths on Windows if the JRE's .j"
+      },
+      {
+       "step": "result",
+       "result": "kept",
+       "detail": "Shown as an issue."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 177.24700475
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/net/snowflake/client/config/SFClientConfigParser.java": [
+    43,
+    88,
+    89,
+    90
+   ]
+  }
+ },
+ {
+  "Bug": "stellar-java-stellar-sdk-15cc6d2c",
+  "Without": {
+   "Findings": [
+    {
+     "Path": "src/main/java/org/stellar/sdk/KeyPair.java",
+     "Title": "Null pointer exception on private key comparison",
+     "Source": "model",
+     "Line": 311,
+     "Located": true,
+     "Note": true,
+     "Doubt": "Codist could not find where this value becomes null in this code.",
+     "Steps": [
+      {
+       "step": "quote",
+       "result": "passed",
+       "detail": "The model quoted \"return this.mPrivateKey.equals(other.mPrivateKey) \u0026\u0026\", and that code is at the line it named."
+      },
+      {
+       "step": "quote",
+       "result": "note",
+       "detail": "Codist could not find where this value becomes null in this code."
+      }
+     ]
+    }
+   ],
+   "Located": 1,
+   "Took": 35.591092916
+  },
+  "With": {
+   "Findings": null,
+   "Located": 0,
+   "Took": 0
+  },
+  "Targets": {
+   "src/main/java/org/stellar/sdk/KeyPair.java": [
+    311
+   ]
+  }
+ }
+]
