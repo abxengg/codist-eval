@@ -27,11 +27,15 @@ import (
 
 const locate = 3
 
+var withTrail *bool
+
 type finding struct {
 	Path, Title, Source string
 	Line                int
 	Located             bool
-	Note                bool `json:",omitempty"` // shown as a note, not an alarm: Codist doubted it
+	Note                bool            `json:",omitempty"` // shown as a note, not an alarm: Codist doubted it
+	Doubt               string          `json:",omitempty"` // why it is a note
+	Steps               json.RawMessage `json:",omitempty"` // how Codist decided, from the review trail
 }
 
 type variant struct {
@@ -55,6 +59,7 @@ func main() {
 	out := flag.String("out", "review-results.json", "where to write results")
 	cache := flag.String("cache", filepath.Join(os.Getenv("HOME"), ".cache/codist-bench/repos"), "benchmark clones")
 	once := flag.Bool("once", false, "review each bug once, without the second-reading variant")
+	withTrail = flag.Bool("trail", false, "record how Codist decided each finding")
 	flag.Parse()
 	list, err := os.ReadFile(flag.Arg(0))
 	if err != nil {
@@ -180,7 +185,15 @@ func runBug(bug, cached, fixed string, client *model.Client, once bool) result {
 		}
 		v.Took = time.Since(start).Seconds()
 		for _, f := range st.Findings(sha) {
-			fd := finding{Path: f.Path, Title: f.Title, Source: f.Source, Line: f.Line, Note: f.Doubt != ""}
+			fd := finding{Path: f.Path, Title: f.Title, Source: f.Source, Line: f.Line, Note: f.Doubt != "", Doubt: f.Doubt}
+			if *withTrail {
+				var tr struct {
+					Steps map[string]json.RawMessage `json:"steps"`
+				}
+				if json.Unmarshal(st.Trail(sha), &tr) == nil {
+					fd.Steps = tr.Steps[f.Key]
+				}
+			}
 			for _, t := range res.Targets[f.Path] {
 				if abs(f.Line-t) <= locate {
 					fd.Located = true
